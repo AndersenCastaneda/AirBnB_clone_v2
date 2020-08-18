@@ -19,6 +19,7 @@ def deploy():
         fileName = fileName.split(' ')[-2]
         return do_deploy(fileName)
 
+
 def do_pack():
     """Function to compress files"""
     local("mkdir -p versions")
