@@ -50,7 +50,7 @@ def do_deploy(archive_path):
     run("tar -xzf /tmp/{} -C {}".format(archive, archiveDir))
 
     # Delete the archive from the web server
-    run("rm /tmp/{}.tgz".format(archive))
+    run("rm /tmp/{}".format(archive))
 
     # Delete the symbolic link /data/web_static/current from the server
     run("rm -rf /data/web_static/current")
