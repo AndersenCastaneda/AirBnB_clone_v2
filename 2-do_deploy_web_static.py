@@ -52,9 +52,13 @@ def do_deploy(archive_path):
     # Delete the archive from the web server
     run("rm /tmp/{}".format(archive))
 
+    run("mv {}/web_static/* {}".format(archiveDir, archiveDir))
+
+    run("rm -rf {}/web_static".format(archiveDir))
+
     # Delete the symbolic link /data/web_static/current from the server
     run("rm -rf /data/web_static/current")
 
     # Create a new the symbolic link
-    run("ln -s {} /data/web_static/current".format(archiveDir))
+    run("ln -s {}/ /data/web_static/current".format(archiveDir))
     return True
