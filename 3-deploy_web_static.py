@@ -11,6 +11,15 @@ env.hosts = ["35.231.98.181", "35.237.106.108"]
 env.user = "ubuntu"
 
 
+def deploy():
+    result = do_pack()
+    if result is None:
+        return False
+    else:
+        fileName = result.__dict__['command']
+        fileName = fileName.split(' ')[-2]
+        return do_deploy(fileName)
+
 def do_pack():
     """Function to compress files"""
     local("mkdir -p versions")
@@ -62,12 +71,3 @@ def do_deploy(archive_path):
     # Create a new the symbolic link
     run("ln -s {}/ /data/web_static/current".format(archiveDir))
     return True
-
-def deploy():
-    result = do_pack()
-    if result is None:
-        return False
-
-    fileName = result.__dict__["command"].split(" ")[-2]
-    resultDeploy = do_deploy(fileName)
-    return resultDeploy
