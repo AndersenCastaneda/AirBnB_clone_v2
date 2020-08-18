@@ -7,11 +7,10 @@ from os import path
 
 # servers ip
 env.hosts = ["35.231.98.181", "35.237.106.108"]
-# user for the servers
-env.user = "ubuntu"
 
 
 def deploy():
+    """Creates and distributes an archive to web servers"""
     result = do_pack()
     if result is None:
         return False
