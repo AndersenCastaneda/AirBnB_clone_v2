@@ -68,5 +68,6 @@ def deploy():
     if result is None:
         return False
 
-    resultDeploy = do_deploy(result)
+    fileName = result.__dict__["command"].split(" ")[-2]
+    resultDeploy = do_deploy(fileName)
     return resultDeploy
