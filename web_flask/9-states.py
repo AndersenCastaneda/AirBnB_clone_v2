@@ -12,7 +12,7 @@ def states_id(id=None):
     """Displays a HTML page whit state_id list"""
     states = storage.all(State)
     if id is not None:
-        key = '{}.{}' format(State, id)
+        key = '{}.{}'.format(State, id)
         if key in states:
             states = states[key]
         else:
