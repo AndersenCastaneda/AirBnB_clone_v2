@@ -21,5 +21,6 @@ class State(BaseModel, Base):
             from models.city import City
             objList = []
             for key, value in storage.all(City).items():
-                objList.append(value)
+                if self.id == value.state_id:
+                    objList.append(value)
             return objList
