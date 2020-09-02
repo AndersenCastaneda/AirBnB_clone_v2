@@ -9,7 +9,7 @@ app = Flask(__name__)
 @app.route('/states_list', strict_slashes=False)
 def list_states():
     """Displays a HTML page whit state list"""
-    states = storage.all(State).values()
+    states = list(storage.all(State).values())
     return render_template('7-states_list', states=states)
 
 
